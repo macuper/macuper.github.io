@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://alvinliu0.github.io/projects/HumanGaussian -->
+<html lang="en" class="fontawesome-i2svg-active fontawesome-i2svg-complete"><!-- === Header Starts === --><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="description" content="HumanGaussian Project Page">
+
+  <title>HumanGaussian: Text-Driven 3D Human Generation with Gaussian Splatting</title>
+
+  <style type="text/css">svg:not(:root).svg-inline--fa{overflow:visible}.svg-inline--fa{display:inline-block;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em}.svg-inline--fa.fa-lg{vertical-align:-.225em}.svg-inline--fa.fa-w-1{width:.0625em}.svg-inline--fa.fa-w-2{width:.125em}.svg-inline--fa.fa-w-3{width:.1875em}.svg-inline--fa.fa-w-4{width:.25em}.svg-inline--fa.fa-w-5{width:.3125em}.svg-inline--fa.fa-w-6{width:.375em}.svg-inline--fa.fa-w-7{width:.4375em}.svg-inline--fa.fa-w-8{width:.5em}.svg-inline--fa.fa-w-9{width:.5625em}.svg-inline--fa.fa-w-10{width:.625em}.svg-inline--fa.fa-w-11{width:.6875em}.svg-inline--fa.fa-w-12{width:.75em}.svg-inline--fa.fa-w-13{width:.8125em}.svg-inline--fa.fa-w-14{width:.875em}.svg-inline--fa.fa-w-15{width:.9375em}.svg-inline--fa.fa-w-16{width:1em}.svg-inline--fa.fa-w-17{width:1.0625em}.svg-inline--fa.fa-w-18{width:1.125em}.svg-inline--fa.fa-w-19{width:1.1875em}.svg-inline--fa.fa-w-20{width:1.25em}.svg-inline--fa.fa-pull-left{margin-right:.3em;width:auto}.svg-inline--fa.fa-pull-right{margin-left:.3em;width:auto}.svg-inline--fa.fa-border{height:1.5em}.svg-inline--fa.fa-li{width:2em}.svg-inline--fa.fa-fw{width:1.25em}.fa-layers svg.svg-inline--fa{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.fa-layers{display:inline-block;height:1em;position:relative;text-align:center;vertical-align:-.125em;width:1em}.fa-layers svg.svg-inline--fa{-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter,.fa-layers-text{display:inline-block;position:absolute;text-align:center}.fa-layers-text{left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter{background-color:#ff253a;border-radius:1em;-webkit-box-sizing:border-box;box-sizing:border-box;color:#fff;height:1.5em;line-height:1;max-width:5em;min-width:1.5em;overflow:hidden;padding:.25em;right:0;text-overflow:ellipsis;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-bottom-right{bottom:0;right:0;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom right;transform-origin:bottom right}.fa-layers-bottom-left{bottom:0;left:0;right:auto;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom left;transform-origin:bottom left}.fa-layers-top-right{right:0;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-top-left{left:0;right:auto;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top left;transform-origin:top left}.fa-lg{font-size:1.3333333333em;line-height:.75em;vertical-align:-.0667em}.fa-xs{font-size:.75em}.fa-sm{font-size:.875em}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-fw{text-align:center;width:1.25em}.fa-ul{list-style-type:none;margin-left:2.5em;padding-left:0}.fa-ul>li{position:relative}.fa-li{left:-2em;position:absolute;text-align:center;width:2em;line-height:inherit}.fa-border{border:solid .08em #eee;border-radius:.1em;padding:.2em .25em .15em}.fa-pull-left{float:left}.fa-pull-right{float:right}.fa.fa-pull-left,.fab.fa-pull-left,.fal.fa-pull-left,.far.fa-pull-left,.fas.fa-pull-left{margin-right:.3em}.fa.fa-pull-right,.fab.fa-pull-right,.fal.fa-pull-right,.far.fa-pull-right,.fas.fa-pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.fa-rotate-90{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{-webkit-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{-webkit-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{-webkit-transform:scale(1,-1);transform:scale(1,-1)}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical{-webkit-transform:scale(-1,-1);transform:scale(-1,-1)}:root .fa-flip-both,:root .fa-flip-horizontal,:root .fa-flip-vertical,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-rotate-90{-webkit-filter:none;filter:none}.fa-stack{display:inline-block;height:2em;position:relative;width:2.5em}.fa-stack-1x,.fa-stack-2x{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.svg-inline--fa.fa-stack-1x{height:1em;width:1.25em}.svg-inline--fa.fa-stack-2x{height:2em;width:2.5em}.fa-inverse{color:#fff}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.svg-inline--fa .fa-primary{fill:var(--fa-primary-color,currentColor);opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa .fa-secondary{fill:var(--fa-secondary-color,currentColor);opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-primary{opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-secondary{opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary{fill:#000}.fad.fa-inverse{color:#fff}</style><link href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/bootstrap.min.css" rel="stylesheet">
+
+  <link href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/bulma.min.css">
+  <link rel="stylesheet" href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/bulma-slider.min.css">
+  <link rel="stylesheet" href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/academicons.min.css">
+  <link rel="stylesheet" href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/index.css">
+
+  <script src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/jquery.min.js"></script>
+  <script defer="" src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/fontawesome.all.min.js"></script>
+  <script src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/bulma-carousel.min.js"></script>
+  <!-- <script src="./common/static/js/bulma-slider.min.js"></script> -->
+  <script src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/index.js"></script>
+
+  <link href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/font.css" rel="stylesheet" type="text/css">
+  <link href="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/style.css" rel="stylesheet" type="text/css">
+
+</head>
+<!-- === Header Ends === -->
+
+
+<body data-new-gr-c-s-check-loaded="14.1142.0" data-gr-ext-installed="">
+
+
+<!-- === Home Section Starts === -->
+<div class="section">
+  <!-- === Title Starts === -->
+  <div class="header">
+    <!-- <div class="logo">
+      <a href="https://mmlab.ie.cuhk.edu.hk/" target="_blank"><img src="./common/cuhk.jfif"></a>
+    </div> -->
+    <div class="title" ,="" style="font-size: 24pt; padding-top: 10pt;">  <!-- Set padding as 10 if title is with two lines. -->
+      HumanGaussian: Text-Driven 3D Human Generation with Gaussian Splatting
+		<!-- <br>
+		<font color="grey" size="4">arXiv Preprint.</font> -->
+    </div>
+  </div>
+  <!-- === Title Ends === -->
+  <div class="author">
+    <a href="https://alvinliu0.github.io/" target="_blank">Xian Liu</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+    <a href="https://xiaohangzhan.github.io/" target="_blank">Xiaohang Zhan</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+    <a href="https://me.kiui.moe/" target="_blank">Jiaxiang Tang</a><sup>3</sup>&nbsp;&nbsp;&nbsp;
+    <br>
+    <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ" target="_blank">Ying Shan</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+    <a href="https://scholar.google.com/citations?user=RuHyY6gAAAAJ" target="_blank">Gang Zeng</a><sup>3</sup>&nbsp;&nbsp;&nbsp;
+    <a href="http://dahua.site/" target="_blank">Dahua Lin</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+    <a href="https://xh-liu.github.io/" target="_blank">Xihui Liu</a><sup>3</sup>&nbsp;&nbsp;&nbsp;
+    <a href="https://liuziwei7.github.io/" target="_blank">Ziwei Liu</a><sup>4</sup>
+  </div>
+  <div class="institution">
+    <sup>1</sup>CUHK&nbsp;&nbsp;&nbsp;
+    <sup>2</sup>Tencent AI Lab&nbsp;&nbsp;&nbsp;
+    <sup>3</sup>PKU&nbsp;&nbsp;&nbsp;
+    <sup>4</sup>HKU&nbsp;&nbsp;&nbsp;
+    <sup>5</sup>NTU 
+  </div>
+
+  <div class="column has-text-centered">
+    <div class="publication-links">
+      <!-- PDF Link. -->
+      <span class="link-block">
+        <a href="https://alvinliu0.github.io/projects/HumanGaussian/humangaussian.pdf" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+            <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+          </span>
+          <span>Paper</span>
+        </a>
+      </span>
+      <span class="link-block">
+        <a href="https://arxiv.org/abs/xxxxxx" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+            <i class="ai ai-arxiv"></i>
+          </span>
+          <span>arXiv</span>
+        </a>
+      </span>
+      <!-- Video Link. -->
+      <span class="link-block">
+        <a href="https://www.youtube.com/watch?v=S3djzHoqPKY" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+            <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg><!-- <i class="fab fa-youtube"></i> Font Awesome fontawesome.com -->
+          </span>
+          <span>Demo</span>
+        </a>
+      </span>
+
+      <!-- Code Link. -->
+      <span class="link-block">
+        <a href="https://github.com/alvinliu0/HumanGaussian" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+            <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+          </span>
+          <span>Github</span>
+        </a>
+      </span>
+
+      <span class="link-block">
+        <a href="https://github.com/alvinliu0/HumanGaussian/tree/main#pretrained-models" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+            <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+          </span>
+          <span>Models</span>
+        </a>
+      </span>
+      <!-- Dataset Link.
+      <span class="link-block">
+        <a href="./#BibTeX" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+            <i class="fa fa-quote-left"></i>
+          </span>
+          <span>Cite</span>
+        </a> -->
+    </div>
+
+  </div>
+  <table width="100%" style="margin: 20pt 0; text-align: center;">
+    <tbody><tr>
+      <td><img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/humangaussian-teaser.gif" width="90%"></td>
+    </tr>
+  </tbody></table>
+</div>
+  <!-- <div class="link">
+    <a href="https://arxiv.org/pdf/2212.02350.pdf" target="_blank">[Paper]</a>&nbsp;
+    <a href="https://github.com/alvinliu0/ANGIE" target="_blank">[Code]</a>&nbsp;
+    <a href="https://github.com/alvinliu0/ANGIE" target="_blank">[Dataset]</a>
+  </div> -->
+
+
+
+<div class="section">
+  <div class="title">Avatar Gallery</div>
+  <div class="container" width="1000px">
+    <div id="teaser-carousel" class="carousel2 results-carousel">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+       
+    <div id="sliderb933f277-ab38-4956-bea9-d12675c3cb2d" class="slider" tabindex="0">
+    <div class="slider-container" style="opacity: 1; width: 37931px; transition: all 300ms ease 0s; transform: translate3d(-2742px, 0px, 0px);"><div class="slider-item" data-slider-index="-3" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_blue_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a blue fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="-2" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_green_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a green fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="-1" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_red_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a red fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="0" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_boy_with_a_beanie_wearing_a_hoodie_and_joggers.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A boy with a beanie wearing a hoodie and joggers.</div>
+      </div></div><div class="slider-item is-slide-previous" data-slider-index="1" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_body_builder_wearing_a_tanktop.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A body builder wearing a tanktop.</div>
+      </div></div><div class="slider-item is-current" data-slider-index="2" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Viking.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Viking.
+          </div>
+      </div></div><div class="slider-item is-slide-next" data-slider-index="3" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_woman_wearing_sunglasses,_a_white_t-shirt_and_jeans.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black woman wearing sunglasses, a white t-shirt and jeans.</div>
+      </div></div><div class="slider-item" data-slider-index="4" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Texas_ranger.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Texas ranger.</div>
+      </div></div><div class="slider-item" data-slider-index="5" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_man_wearing_a_green_t-shirt.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black man wearing a green t-shirt.</div>
+      </div></div><div class="slider-item" data-slider-index="6" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_woman_wearing_a_hoodie.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black woman wearing a hoodie.</div>
+      </div></div><div class="slider-item" data-slider-index="7" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_woman_wearing_ski_clothes.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman wearing ski clothes.</div>
+      </div></div><div class="slider-item" data-slider-index="8" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_man_wearing_a_red_baseball_cap.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black man wearing a red baseball cap.</div>
+      </div></div><div class="slider-item" data-slider-index="9" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_woman_dressed_in_gym_clothes.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black woman dressed in gym clothes.</div>
+      </div></div><div class="slider-item" data-slider-index="10" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_woman_wearing_a_short_jean_skirt,_a_cropped_top,_and_a_white_sneaker.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman wearing a short jean skirt, a cropped top, and a white sneaker.</div>
+      </div></div><div class="slider-item" data-slider-index="11" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_black_hat_and_sunglasses.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a black hat and sunglasses.</div>
+      </div></div><div class="slider-item" data-slider-index="12" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_buzz_cut_wearing_a_red_t-shirt.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a buzz cut wearing a red t-shirt.</div>
+      </div></div><div class="slider-item" data-slider-index="13" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_woman_with_a_side_shave_wearing_a_black_t-shirt.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman with a side shave wearing a black t-shirt.</div>
+      </div></div><div class="slider-item" data-slider-index="14" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_messy_hair_wearing_a_gray_sweater.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a messy hair wearing a gray sweater.</div>
+      </div></div><div class="slider-item" data-slider-index="15" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_person_with_a_curly_beard_and_a_black_hoodie.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A person with a curly beard and a black hoodie.</div>
+      </div></div><div class="slider-item" data-slider-index="16" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_bounty_hunter.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A bounty hunter.</div>
+      </div></div><div class="slider-item" data-slider-index="17" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_cyborg.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A cyborg.</div>
+      </div></div><div class="slider-item" data-slider-index="18" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_demon_slayer.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A demon slayer.</div>
+      </div></div><div class="slider-item" data-slider-index="19" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_dryad.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A dryad.</div>
+      </div></div><div class="slider-item" data-slider-index="20" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_fairy.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A fairy.</div>
+      </div></div><div class="slider-item" data-slider-index="21" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_knight.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A knight.</div>
+      </div></div><div class="slider-item" data-slider-index="22" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_philosopher.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A philosopher.</div>
+      </div></div><div class="slider-item" data-slider-index="23" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_vampire_hunter.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A vampire hunter.</div>
+      </div></div><div class="slider-item" data-slider-index="24" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_revenant.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A revenant.</div>
+      </div></div><div class="slider-item" data-slider-index="25" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_vampire.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A vampire.</div>
+      </div></div><div class="slider-item" data-slider-index="26" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_vigilante.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A vigilante.</div>
+      </div></div><div class="slider-item" data-slider-index="27" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_warlock.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A warlock.</div>
+      </div></div><div class="slider-item" data-slider-index="28" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/an_alchemist.gif" width="80%">
+        <div class="card-content has-text-centered">
+          An alchemist.</div>
+      </div></div><div class="slider-item" data-slider-index="29" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/an_alien.gif" width="80%">
+        <div class="card-content has-text-centered">
+          An alien.</div>
+      </div></div><div class="slider-item" data-slider-index="30" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/an_astrologer.gif" width="80%">
+        <div class="card-content has-text-centered">
+          An astrologer.</div>
+      </div></div><div class="slider-item" data-slider-index="31" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_black_fedora_and_a_denim_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a black fedora and a denim jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="32" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_brown_fedora_and_a_denim_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a brown fedora and a denim jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="33" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_woman_with_a_pink_beanie.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman with a pink beanie.</div>
+      </div></div><div class="slider-item" data-slider-index="34" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_woman_with_a_yellow_beanie.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman with a yellow beanie.</div>
+      </div></div><div class="slider-item" data-slider-index="35" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_black_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a black fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="36" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_blue_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a blue fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="37" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_green_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a green fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="38" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_red_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a red fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="39" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_boy_with_a_beanie_wearing_a_hoodie_and_joggers.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A boy with a beanie wearing a hoodie and joggers.</div>
+      </div></div><div class="slider-item" data-slider-index="40" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_body_builder_wearing_a_tanktop.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A body builder wearing a tanktop.</div>
+      </div></div><div class="slider-item" data-slider-index="41" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Viking.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Viking.
+          </div>
+      </div></div><div class="slider-item" data-slider-index="42" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_woman_wearing_sunglasses,_a_white_t-shirt_and_jeans.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black woman wearing sunglasses, a white t-shirt and jeans.</div>
+      </div></div><div class="slider-item" data-slider-index="43" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Texas_ranger.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Texas ranger.</div>
+      </div></div><div class="slider-item" data-slider-index="44" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_man_wearing_a_green_t-shirt.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black man wearing a green t-shirt.</div>
+      </div></div><div class="slider-item" data-slider-index="45" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_woman_wearing_a_hoodie.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black woman wearing a hoodie.</div>
+      </div></div><div class="slider-item" data-slider-index="46" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_woman_wearing_ski_clothes.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman wearing ski clothes.</div>
+      </div></div><div class="slider-item" data-slider-index="47" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_man_wearing_a_red_baseball_cap.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black man wearing a red baseball cap.</div>
+      </div></div><div class="slider-item" data-slider-index="48" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_Black_woman_dressed_in_gym_clothes.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A Black woman dressed in gym clothes.</div>
+      </div></div><div class="slider-item" data-slider-index="49" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_woman_wearing_a_short_jean_skirt,_a_cropped_top,_and_a_white_sneaker.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman wearing a short jean skirt, a cropped top, and a white sneaker.</div>
+      </div></div><div class="slider-item" data-slider-index="50" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_black_hat_and_sunglasses.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a black hat and sunglasses.</div>
+      </div></div><div class="slider-item" data-slider-index="51" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_buzz_cut_wearing_a_red_t-shirt.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a buzz cut wearing a red t-shirt.</div>
+      </div></div><div class="slider-item" data-slider-index="52" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_woman_with_a_side_shave_wearing_a_black_t-shirt.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman with a side shave wearing a black t-shirt.</div>
+      </div></div><div class="slider-item" data-slider-index="53" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_messy_hair_wearing_a_gray_sweater.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a messy hair wearing a gray sweater.</div>
+      </div></div><div class="slider-item" data-slider-index="54" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_person_with_a_curly_beard_and_a_black_hoodie.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A person with a curly beard and a black hoodie.</div>
+      </div></div><div class="slider-item" data-slider-index="55" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_bounty_hunter.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A bounty hunter.</div>
+      </div></div><div class="slider-item" data-slider-index="56" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_cyborg.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A cyborg.</div>
+      </div></div><div class="slider-item" data-slider-index="57" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_demon_slayer.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A demon slayer.</div>
+      </div></div><div class="slider-item" data-slider-index="58" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_dryad.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A dryad.</div>
+      </div></div><div class="slider-item" data-slider-index="59" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_fairy.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A fairy.</div>
+      </div></div><div class="slider-item" data-slider-index="60" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_knight.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A knight.</div>
+      </div></div><div class="slider-item" data-slider-index="61" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_philosopher.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A philosopher.</div>
+      </div></div><div class="slider-item" data-slider-index="62" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_vampire_hunter.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A vampire hunter.</div>
+      </div></div><div class="slider-item" data-slider-index="63" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_revenant.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A revenant.</div>
+      </div></div><div class="slider-item" data-slider-index="64" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_vampire.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A vampire.</div>
+      </div></div><div class="slider-item" data-slider-index="65" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_vigilante.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A vigilante.</div>
+      </div></div><div class="slider-item" data-slider-index="66" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_warlock.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A warlock.</div>
+      </div></div><div class="slider-item" data-slider-index="67" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/an_alchemist.gif" width="80%">
+        <div class="card-content has-text-centered">
+          An alchemist.</div>
+      </div></div><div class="slider-item" data-slider-index="68" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/an_alien.gif" width="80%">
+        <div class="card-content has-text-centered">
+          An alien.</div>
+      </div></div><div class="slider-item" data-slider-index="69" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/an_astrologer.gif" width="80%">
+        <div class="card-content has-text-centered">
+          An astrologer.</div>
+      </div></div><div class="slider-item" data-slider-index="70" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_black_fedora_and_a_denim_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a black fedora and a denim jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="71" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_brown_fedora_and_a_denim_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a brown fedora and a denim jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="72" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_woman_with_a_pink_beanie.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman with a pink beanie.</div>
+      </div></div><div class="slider-item" data-slider-index="73" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_woman_with_a_yellow_beanie.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A woman with a yellow beanie.</div>
+      </div></div><div class="slider-item" data-slider-index="74" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_black_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a black fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="75" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_blue_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a blue fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="76" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_green_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a green fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="77" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_man_with_a_red_fedora_and_a_leather_jacket.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A man with a red fedora and a leather jacket.</div>
+      </div></div><div class="slider-item" data-slider-index="78" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/A_boy_with_a_beanie_wearing_a_hoodie_and_joggers.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A boy with a beanie wearing a hoodie and joggers.</div>
+      </div></div><div class="slider-item" data-slider-index="79" data-cloned="true" style="width: 457px;"><div class="card-image" style="text-align: center;">
+        <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/a_body_builder_wearing_a_tanktop.gif" width="80%">
+        <div class="card-content has-text-centered">
+          A body builder wearing a tanktop.</div>
+      </div></div></div>
+  <div class="slider-navigation-previous"><svg viewBox="0 0 50 80" xml:space="preserve">
+      <polyline fill="currentColor" stroke-width=".5em" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 "></polyline>
+    </svg></div>
+<div class="slider-navigation-next"><svg viewBox="0 0 50 80" xml:space="preserve">
+      <polyline fill="currentColor" stroke-width=".5em" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 "></polyline>
+    </svg></div><div class="slider-pagination"></div></div></div>
+  </div>
+</div>
+
+<!-- === Result Section Starts === -->
+<!-- === Result Section Ends === -->
+<div class="section">
+	<div class="title">Demo Video</div>
+	<div class="body">
+  
+    <div class="publication-video">
+      <iframe src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/S3djzHoqPKY.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- === Overview Section Starts === -->
+<div class="section">
+  <div class="title">Abstract</div>
+  <div class="body">
+    Realistic 3D human generation from text prompts is a desirable yet challenging task. 
+    Existing methods optimize 3D representations like mesh or neural fields via score distillation sampling (SDS), 
+    which suffers from inadequate fine details or excessive training time. In this paper, 
+    we propose an efficient yet effective framework, <b>HumanGaussian</b>, that generates high-quality 3D humans with fine-grained geometry and realistic appearance. 
+    Our key insight is that 3D Gaussian Splatting is an efficient renderer with periodic Gaussian shrinkage or growing, 
+    where such adaptive density control can be naturally guided by intrinsic human structures. 
+    Specifically, <b>1)</b> we first propose a <i>Structure-Aware SDS</i> that simultaneously optimizes human appearance and geometry. 
+    The multi-modal score function from both RGB and depth space is leveraged to distill the Gaussian densification and pruning process. 
+    <b>2)</b> Moreover, we devise an <i>Annealed Negative Prompt Guidance</i> by decomposing SDS into a noisier generative score and a cleaner classifier score, which well addresses the over-saturation issue. 
+    The floating artifacts are further eliminated based on Gaussian size in a prune-only phase to enhance generation smoothness. 
+    Extensive experiments demonstrate the superior efficiency and competitive quality of our framework, rendering vivid 3D humans under diverse scenarios.
+  </div>
+  <div class="teaser">
+    <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/teaser-1.png" width="100%">
+  </div>
+  <div class="teaser">
+    <img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/teaser-2.png" width="100%">
+  </div>
+  We propose <b>HumanGaussian</b>, an efficient yet effective framework that generates high-quality 3D humans with fine-grained geometry and realistic appearance. Our method adapts 3D Gaussian Splatting into text-driven 3D human generation with novel designs.
+</div>
+<!-- === Overview Section Ends === -->
+
+<div class="section">
+  <div class="title">Framework Overview</div>
+  <div class="body">
+
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+    <table width="100%" style="margin: 20pt 0; text-align: center;">
+      <tbody><tr>
+        <td><img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/framework.png" width="100%"></td>
+      </tr>
+    </tbody></table>
+    <b>Overview of the proposed HumanGaussian Framework.</b> We generate high-quality 3D humans from text prompts with the neural representation of 3D Gaussian Splatting (3DGS). In <i>Structure-Aware SDS</i>, we start from the SMPL-X prior to densely sample Gaussians on the human mesh surface as initial center positions. Then, a Texture-Structure Joint Model is trained to simultaneously denoise the image <b>x</b> and depth <b>d</b> conditioned on pose skeleton <b>p</b>. Based on this, we design a dual-branch SDS to jointly optimize human appearance and geometry, where the 3DGS density is adaptively controlled by distilling from both the RGB and depth space. In <i>Annealed Negative Prompt Guidance</i>, we use the cleaner classifier score with an annealed negative score to regularize the stochastic SDS gradient of high variance. The floating artifacts are further eliminated based on Gaussian size in a prune-only phase to enhance generation smoothness.
+  </div>
+</div>
+
+<!-- === Result Section Starts === -->
+<div class="section">
+  <div class="title">Qualitative Comparisons</div>
+  <div class="body">
+
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+    <table width="100%" style="margin: 20pt 0; text-align: center;">
+      <tbody><tr>
+        <td><img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/comparison.png" width="100%"></td>
+      </tr>
+    </tbody></table>
+    <b>Visual Comparisons with Text-to-3D and 3D Human Models.</b> We compare with recent state-of-the-art baselines on five different prompts, each showing two camera views. Note that the textural unrealism and blurriness are highlighted with <b><span style="color: rgb(255, 192, 0); white-space: nowrap">yellow</span></b> arrows; the geometric artifacts are highlighted with <b><span style="color: rgb(112, 173, 71); white-space: nowrap">green</span></b> rectangles. Please kindly <b>zoom in for best view</b> and refer to demo video for more results.
+  </div>
+</div>
+<!-- === Result Section Ends === -->
+
+<!-- === Result Section Starts === -->
+<div class="section">
+  <div class="title">Ablation Study</div>
+  <div class="body">
+    <table width="100%" style="margin: 20pt 0; text-align: center;">
+      <tbody><tr>
+        <td><img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/ablation.png" width="100%"></td>
+      </tr>
+    </tbody></table>
+    <b>Ablation Studies on HumanGaussian Module Design.</b> We present generation results of the human frontal view under five ablation settings for better visualization and comparisons: <b>(A)</b> <i>baseline</i>; <b>(B)</b> <i>+SMPL-X, Pose-Cond.</i>; <b>(C)</b> <i>+Neg. Guidance, CFG=7.5</i>; <b>(D)</b> <i>+Dual-Branch SDS</i>; <b>(E)</b> <i>+Size-based Prune</i>. The detailed ablation setting designs and result analysis are elaborated in Sec.4.3.
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+    <!-- <table width="100%" style="margin: 20pt 0; text-align: center;"> -->
+    <!-- </table> -->
+  
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">Zero-Shot Animation</div>
+  <div class="body">
+    <table width="100%" style="margin: 20pt 0; text-align: center;">
+      <tbody><tr>
+        <td><img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/animation.gif" width="100%"></td>
+      </tr>
+    </tbody></table>
+    Though the <b>HumanGaussian</b> framework is trained on a single body pose at the training stage, it can be animated with unseen pose sequences in a zero-shot manner, <i>i.e.</i>, we can use a sequence of SMPL-X pose parameters to animate the pre-trained avatars w/o further finetuning.
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+    <!-- <table width="100%" style="margin: 20pt 0; text-align: center;"> -->
+    <!-- </table> -->
+  
+  </div>
+</div>
+<!-- === Result Section Ends === -->
+
+<!-- === Result Section Starts === -->
+<!-- <div class="section">
+  <div class="title">More Qualitative Results (1024x1024)</div>
+  <div class="body"> -->
+
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+    <!-- <table width="100%" style="margin: 20pt 0; text-align: center;">
+      <div class="container" width=1000px>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-clevr" style="text-align: center;">
+            <img src="./content/our_more1.png" width="90%">
+          </div>
+          <div class="item item-clevr" style="text-align: center;">
+            <img src="./content/our_more2.png" width="90%">
+          </div>
+          <div class="item item-clevr" style="text-align: center;">
+            <img src="./content/our_more3.png" width="90%">
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <tr>
+        <td><img src="./content/our_more1.png" width="90%"></td>
+      </tr> -->
+    <!-- </table>
+  
+  </div>
+</div> -->
+<!-- === Result Section Ends === -->
+
+<!-- === Reference Section Starts === -->
+<div class="section">
+  <div class="bibtex">BibTeX</div>
+<pre>  @article{liu2023humangaussian,
+    title={HumanGaussian: Text-Driven 3D Human Generation with Gaussian Splatting},
+    author={Liu, Xian and Zhan, Xiaohang and Tang, Jiaxiang and Shan, Ying and Zeng, Gang and Lin, Dahua and Liu, Xihui and Liu, Ziwei},
+    journal={arXiv preprint arXiv:xxxxx},
+    year={2023}
+}
+</pre>
+<div class="ref">Related Work</div>
+  <div class="citation">
+    <div class="image" style="padding-top: 5pt;"><img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/dreamgaussian.png" width="90%"></div>
+    <div class="comment">
+      <a href="https://arxiv.org/abs/2309.16653" target="_blank">
+        Jiaxiang Tang et al. DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation.
+        arXiv preprint arXiv:2309.16653, 2023.</a><br>
+      <b>Comment:</b>
+      The first work that adapts Gaussian Splatting to the Text-to-3D generation problem.
+    </div>
+  </div>
+  <div class="citation">
+    <div class="image" style="padding-top: 10pt;"><img src="./HumanGaussian_ Text-Driven 3D Human Generation with Gaussian Splatting_files/hyperhuman.png" width="90%"></div>
+    <div class="comment">
+      <a href="https://arxiv.org/abs/2310.08579" target="_blank">
+        Xian Liu et al. HyperHuman: Hyper-Realistic Human Generation with Latent Structural Diffusion. arXiv preprint arXiv:2310.08579, 2023.</a><br>
+      <b>Comment:</b>
+      An in-the-wild human generation foundation model that simultaneously denoises the RGB, depth, and surface-normal to capture the joint distribution in a unified framework.
+    </div>
+  </div>
+</div>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
